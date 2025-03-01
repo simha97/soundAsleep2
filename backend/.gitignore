@@ -1,12 +1,8 @@
-# Ignore environment files (secrets)
-config.env
-.env
-
-# Node.js dependencies (should not be committed)
+# Node modules
 node_modules/
 
-# Log files
-*.log
+# Environment files
+config.env
 
-# OS files
-.DS_Store
+# Logs
+*.log

@@ -1,43 +1,34 @@
 import React from "react";
 import "../App.css";
 
-export default function DayRating({ day, handleChange, setStep }) {
+export default function DayRating({ day, handleChange }) {
   const ratingOptions = ["Productive", "Challenging", "Relaxing", "Stressful"];
 
   return (
-    <div
-      className="btn-group"
-      role="group"
-      aria-label="Day selection"
-    >
-      <label className="text-questions">How was your day?</label>
+    <div className="step-container" role="group" aria-label="Day selection">
+      <label>How was your day?</label>
 
-      {ratingOptions.map((option) => (
-        <span key={option}>
-          <input
-            type="radio"
-            className="btn-check"
-            id={`day-${option}`}
-            name="day"
-            value={option}
-            checked={day === option}
-            onChange={() => handleChange("day", option)}
-            autoComplete="off"
-          />
+      <div className="radio-container">
+        {ratingOptions.map((option) => (
           <label
-            className="text-questionsbtn radio-outline-primary"
+            key={option}
+            className={`radio-button ${day === option ? "active" : ""}`}
             htmlFor={`day-${option}`}
           >
+            <input
+              type="radio"
+              id={`day-${option}`}
+              name="day"
+              value={option}
+              checked={day === option}
+              onChange={() => handleChange("day", option)}
+              autoComplete="off"
+            />
+
             {option}
           </label>
-        </span>
-      ))}
-      <button
-        className="btn-primary"
-        onClick={() => setStep((prev) => prev + 1)}
-      >
-        Next Question
-      </button>
+        ))}
+      </div>
     </div>
   );
 }

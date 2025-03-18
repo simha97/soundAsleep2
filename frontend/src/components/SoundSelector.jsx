@@ -26,11 +26,9 @@ export default function SoundSelector({ mood, handleChange }) {
   }
 
   return (
-    <div className="container">
-      <h4 className="text-questions">{moodMessages[mood]}</h4>
-      <h4 className="text-questions">
-        We suggest three sounds to have a good night sleep:
-      </h4>
+    <div className="step-container">
+      <h4>{moodMessages[mood]}</h4>
+      <h4>We suggest three sounds to have a good night sleep:</h4>
 
       {recommendedSounds.map((sound) => (
         <SoundCard

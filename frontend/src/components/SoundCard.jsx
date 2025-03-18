@@ -5,7 +5,7 @@ import { faPlayCircle, faPauseCircle } from "@fortawesome/free-solid-svg-icons";
 export default function SoundCard({ sound, onToggle }) {
   const audioRef = useRef(null);
   const styling = sound.isPlaying
-    ? "sound-container-playing"
+    ? "sound-container playing"
     : "sound-container";
 
   useEffect(() => {
@@ -18,13 +18,17 @@ export default function SoundCard({ sound, onToggle }) {
   }, [sound.isPlaying]);
 
   return (
-    <div onClick={onToggle} className={styling}>
+    <div className={styling} onClick={onToggle}>
       <img src={sound.imageUrl} className="sound-img" alt="Sound thumbnail" />
       <div>
-        <h4 className="sound-title">{sound.title}</h4>
+        <h5 className="sound-title">{sound.title}</h5>
         <audio ref={audioRef} src={sound.audioUrl} />
       </div>
-      <FontAwesomeIcon icon={sound.isPlaying ? faPauseCircle : faPlayCircle} />
+      <FontAwesomeIcon
+        size="4x"
+        className="card-icon"
+        icon={sound.isPlaying ? faPauseCircle : faPlayCircle}
+      />
     </div>
   );
 }
